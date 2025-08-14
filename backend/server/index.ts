@@ -754,7 +754,6 @@ app.get('/swaps', async (req, res) => {
             
             // Check if cache is valid (within 5 seconds)
             if (cached && (Date.now() - cached.timestamp < SWAP_CACHE_TTL)) {
-                console.log(`Cache hit for proposal ${marketId}`);
                 res.send(cached.data);
                 return;
             }
@@ -792,7 +791,6 @@ app.get('/swaps', async (req, res) => {
                 data: response,
                 timestamp: Date.now()
             });
-            console.log(`Cache set for proposal ${marketId}`);
         }
 
         res.send(response);
